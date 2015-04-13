@@ -26,6 +26,7 @@
 
 	function init() {
 
+		// Affichage en temps réel des données du Leap Motion
 		document.body.style.cssText = 'font: 600 12pt monospace; margin: 0; overflow: hidden;' ;
 
 		var info = document.body.appendChild( document.createElement( 'div' ) );
@@ -36,13 +37,16 @@
 			'<div id=fingerData ></div>' +
 		'';
 
+		// Affichage des statistiques WebGL (FPS, ...)
 		stats = new Stats();
 		stats.domElement.style.cssText = 'position: absolute; right: 0; top: 0; z-index: 100; ';
 		document.body.appendChild( stats.domElement );
 
+		// Création du renderer WebGL qui va permettre d'afficher la main grâce aux données
+		// du Leap Motion
 		renderer = new THREE.WebGLRenderer( { alpha: 1, antialias: true, clearColor: 0xffffff }  );
-		renderer.setSize( window.innerWidth, window.innerHeight );
-		document.body.appendChild( renderer.domElement );
+		renderer.setSize( window.innerWidth, window.innerHeight ); // On définit la taille du renderer
+		document.body.appendChild( renderer.domElement ); // On ajoute le renderer à l'arbre du DOM de la page courante
 
 		camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 5000 );
 		camera.position.set( 500, 500, 500 );
