@@ -48,14 +48,17 @@
 		renderer.setSize( window.innerWidth, window.innerHeight ); // On définit la taille du renderer
 		document.body.appendChild( renderer.domElement ); // On ajoute le renderer à l'arbre du DOM de la page courante
 
+		// Création et positionnement de la caméra de la scène en perspective
 		camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 5000 );
 		camera.position.set( 500, 500, 500 );
 
+		// Activation de la gestion de la souris dans la scène avec les outils WebGL.
 		controls = new THREE.TrackballControls( camera, renderer.domElement );
 
+		// Création de la scène 3D en WebGL
 		scene = new THREE.Scene();
 
-// ground box
+		// Création du sol de la scène 3D
 		var geometry = new THREE.BoxGeometry( 500, 2, 500 );
 		material = new THREE.MeshNormalMaterial();
 		var mesh = new THREE.Mesh( geometry, material );
